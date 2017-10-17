@@ -25,10 +25,6 @@ The communication between Linux kernel’s subsystem and the userspace occurs th
 command line utility which is bundled in the iproute2 software package along with other networking
 utilities. The tc utility is used to configure the Traffic Control interface in the Linux kernel.
 
-### Authors
-
-* Pavlos Ratis
-
 ### Prerequisites
 Before proceeding you need to install the following dependencies:
 
@@ -105,3 +101,6 @@ Or add it to a cron job by adding the following entry:
 
     @hourly /path/to/my/project/manage.py runjobs hourly
 
+### Authors
+
+* Pavlos Ratis
