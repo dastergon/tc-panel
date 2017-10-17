@@ -1,0 +1,123 @@
+{% load staticfiles %}
+{% load notifications_tags %}
+
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Traffic Control Panel</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "css/dashboard.css" %}">
+        <link rel="stylesheet" href="{% static "css/styles.css" %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.js"></script>
+        <script src="{% static "js/main.js" %}"></script>
+        <script src="{% static "js/sortTable.js" %}"></script>
+    </head>
+        <nav class="navbar navbar-toggleable-md  navbar-inverse fixed-top bg-inverse">
+        {% if user.is_authenticated %}
+            <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+			</button>
+			<a class="navbar-brand" href="/">Dashboard</a>
+		{% else %}
+			<a class="navbar-brand" href="/">TC Panel</a>
+		{% endif %}
+		<div class="collapse navbar-collapse " id="navbarsExampleDefault">
+        {% if user.is_authenticated %}
+        <ul class="navbar-nav mr-auto">
+            {% if user.is_superuser %}
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'history' %}">Audit</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'view_notifications' %}">Deployment Messages</a>
+            </li>
+            {% endif %}
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.first_name }}</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown01">
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+              </div>
+            </li>
+		</ul>
+		{% endif %}
+      </div>
+    </nav>
+
+{% if user.is_authenticated %}
+  <div class="container-fluid">
+      <div class="row">
+        <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+          <ul class="nav nav-pills flex-column">
+           <li class="nav-item">
+                <a class="nav-link" href="/">Main Dashboard
+                </a>
+           </li>
+
+            {% if user.is_superuser %}
+           <li class="nav-item">
+                <a class="nav-link" href="{% url 'groups' %}">Manage Groups</a>
+           </li>
+           <li class="nav-item">
+                <a class="nav-link" href="{% url 'add_region' %}">Create Geographical Regions</a>
+           </li>
+           <li class="nav-item">
+                <a class="nav-link" href="{% url 'add_wan' %}">Create WAN Attributes</a>
+            </li>
+            {% endif %}
+           <li class="nav-item">
+                <a class="nav-link" href="{% url 'add_instance_type' %}">Create Instance Types</a>
+            </li>
+           <li class="nav-item">
+                <a class="nav-link" href="{% url 'configure_hosts' %}">Configure Hosts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'add_rule' %}">Add Rules</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'list_all_rules' %}">List all rules </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'add_rule_group' %}">Create Deployment Group</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'list_deployment_groups' %}">List Deployment Group</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'list_all_hosts' %}"> List all Hosts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'overview' %}">Bird's Eye View </a>
+            </li>
+          </ul>
+        </nav>
+{% endif %}
+{% if user.is_authenticated %}
+<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+{% endif %}
+{% block content %}
+
+{% endblock %}
+{% if user.is_authenticated %}
+</main>
+{% endif %}
+<div class="container">
+<footer>
+    <hr class="featurette-divider">
+    <p class="float-right"><a href="#">Back to top</a></p>
+    <p class="text-center">2017 | <a href="https://dastergon.gr">Pavlos Ratis</a></p>
+</footer>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+<script src="{% static "js/vendor/bootstrap.min.js" %}"></script>
+</body>
+</html>

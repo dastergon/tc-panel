@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for host in hosts %}
+<h2>Host: {{ host.name}} </h2>
+<p> Host's software and hardware information and assigned rules</p>
+<ul>
+    <li>IP Address: {{ host.ip_address }}</li>
+    <li>Region: {{ host.region }}</li>
+</ul>
+<h3>Host information:</h3>
+<ul>
+    <li>CPU cores: {{ host.cpu }}</li>
+    <li>Memory: {{ host.memory }}</li>
+    <li>Linux Distribution: {{ host.distribution }}</li>
+    <li>Linux Kernel version: {{ host.kernel }}</li>
+</ul>
+{% endfor %}
+<h2>Assigned Rules</h2>
+<form action="/rule/delete/" method="post">
+    {% csrf_token %}
+    {{ actions_form }}
+    <input type="submit" name="submit" value="Submit" />
+    <br />
+    <table id="rule-table">
+    <tr>
+        <th><input type="checkbox" onclick="toggle(this)" /></th>
+        {% for field in add_rule %}
+        {% if field.label == "Bw rate" %}
+        {% elif field.label == "Latency time unit" %}
+        {% elif field.label == "Apply the same traffic shaping rules to region hosts" %}
+        {% else %}
+            <th onclick="sortTable({{ forloop.counter0 }})">{{ field.label }}</th>
+        {% endif %}
+        {% endfor %}
+        <th>Created</th>
+    </tr>
+    {% for var in rules %}
+    <tr>
+        <td><input type="checkbox" class="checkbox" name="rules" value={{ var.id }}></td>
+        <td>{{ var.host.region }}</td>
+        <td>{{ var.host }}</td>
+        <td>{{ var.interface }}</td>
+        <td>{{ var.src_port_number }}</td>
+        <td>{{ var.host.instance_type }}</td>
+        <td>{{ var.get_traffic_type_display }}</td>
+        <td>{{ var.target_region}}</td>
+        <td>{{ var.target_host }}</td>
+        <td>{{ var.target_ip_address }}</td>
+        <td>{{ var.port_number }}</td>
+        {% if var.bandwidth %}
+        <td>{{ var.bandwidth }} {{ var.get_bw_rate_display }}</td>
+        {% else %}
+        <td>None</td>
+        {% endif %}
+        {% if var.latency %}
+            <td>{{ var.latency }} {{ var.get_latency_time_unit_display }}</td>
+        {% else %}
+            <td>None</td>
+        {% endif %}
+        <td>{{ var.packet_loss }}</td>
+        <td>{{ var.packet_corruption_rate }}</td>
+        <td>{{ var.created }}</td>
+    </tr>
+    {% empty %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    {% endfor %}
+    </table>
+</form>
+{% endblock %}

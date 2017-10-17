@@ -1,0 +1,101 @@
+[
+  {
+    "fields": {
+      "latency": "42",
+      "bandwidth": "750",
+      "bw_rate": "m",
+      "name": "us-east-1"
+    },
+    "model": "control_panel.Region"
+  },
+  {
+    "fields": {
+      "latency": "43",
+      "bandwidth": "750",
+      "bw_rate": "m",
+      "name": "us-east-2"
+    },
+    "model": "control_panel.Region"
+  },
+  {
+    "fields": {
+      "latency": "68",
+      "bandwidth": "750",
+      "bw_rate": "m",
+      "name": "us-west-1"
+    },
+    "model": "control_panel.Region"
+  },
+  {
+    "fields": {
+      "latency": "72",
+      "bandwidth": "750",
+      "bw_rate": "m",
+      "name": "us-west-2"
+    },
+    "model": "control_panel.Region"
+  },
+  {
+    "fields": {
+      "latency": "29",
+      "bandwidth": "750",
+      "bw_rate": "m",
+      "name": "eu-central-1"
+    },
+    "model": "control_panel.Region"
+  },
+  {
+    "fields": {
+      "latency": "46",
+      "bandwidth": "750",
+      "bw_rate": "m",
+      "name": "eu-west-1"
+    },
+    "model": "control_panel.Region"
+  },
+  {
+    "fields": {
+      "latency": "38",
+      "bandwidth": "750",
+      "bw_rate": "m",
+      "name": "eu-west-2"
+    },
+    "model": "control_panel.Region"
+  },
+  {
+    "fields": {
+      "latency": "95",
+      "bandwidth": "750",
+      "bw_rate": "m",
+      "name": "asia-southeast-1"
+    },
+    "model": "control_panel.Region"
+  },
+  {
+    "fields": {
+      "latency": "157",
+      "bandwidth": "750",
+      "bw_rate": "m",
+      "name": "asia-northeast-1"
+    },
+    "model": "control_panel.Region"
+  },
+  {
+    "fields": {
+      "latency": "184",
+      "bandwidth": "750",
+      "bw_rate": "m",
+      "name": "asia-south-1"
+    },
+    "model": "control_panel.Region"
+  },
+  {
+    "fields": {
+      "latency": "187",
+      "bandwidth": "750",
+      "bw_rate": "m",
+      "name": "asia-northeast-2"
+    },
+    "model": "control_panel.Region"
+  }
+]

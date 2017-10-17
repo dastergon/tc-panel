@@ -1,0 +1,50 @@
+[
+  {
+    "fields": {
+        "name": "eu-west_us-east",
+        "latency": "94.28",
+        "latency_time_unit": "2"
+    },
+    "model": "control_panel.WAN"
+  },
+  {
+    "fields": {
+        "name": "us-east_eu-west",
+        "latency": "92.5",
+        "latency_time_unit": "2"
+    },
+    "model": "control_panel.WAN"
+  },
+  {
+    "fields": {
+        "name": "eu-west_us-west",
+        "latency": "144.16",
+        "latency_time_unit": "2"
+    },
+    "model": "control_panel.WAN"
+  },
+  {
+    "fields": {
+        "name": "us-west_eu-west",
+        "latency": "144.48",
+        "latency_time_unit": "2"
+    },
+    "model": "control_panel.WAN"
+  },
+  {
+    "fields": {
+        "name": "us-east_us_west",
+        "latency": "69.36",
+        "latency_time_unit": "2"
+    },
+    "model": "control_panel.WAN"
+  },
+  {
+      "fields": {
+        "name": "us-west_us-east",
+        "latency": "87.34",
+        "latency_time_unit": "2"
+    },
+    "model": "control_panel.WAN"
+  }
+]

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<section class="jumbotron text-center">
+    <div class="container">
+    <h1 class="jumbotron-heading">Traffic Control Panel</h1>
+    <p class="lead text-muted">Easy Geo-Distributed Emulations!</p>
+    <p>
+    <a class="btn btn-success" href="{% url 'login' %}">Sign in</a>
+    <a class="btn btn-primary" href="{% url 'register' %}">Sign up</a>
+    </p>
+    </div>
+</section>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+	<h2>Emulation</h2>
+	<p>Create your own Wide Area Network emulation without constraints.</p>
+</div>
+<div class="col-md-4">
+	<h2>Automation</h2>
+	<p>There is no need to apply network conditions to your hosts manually. Everything is under control! </p>
+</div>
+<div class="col-md-4">
+	<h2>User Interface</h2>
+	<p>An intuitive interface will guide you to specify in detail all the characteristics of your Geo-Distributed setting.</p>
+</div>
+</div>
+</div>
+{% endblock %}

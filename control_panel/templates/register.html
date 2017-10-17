@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container">
+    {% if registered %}
+    <div class="text-center alert alert-success">
+        <strong>Thank you for registering!</strong>
+        <meta http-equiv="refresh" content="2; {% url 'login' %}"/>
+        <a href="{% url 'login' %}">
+            Please click here if you are not redirected automatically
+        </a><br/>
+    </div>
+    {% else %}
+    <div class="page-header">
+        <h1>Registration Form</h1>
+    </div>
+    <div class="panel panel-primary register">
+        {% if user_form.non_field_errors or profile_form.non_field_errors %}
+        <div class="text-center alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            {{ user_form.non_field_errors|striptags }}
+            {{ profile_form.non_field_errors|striptags }}
+        </div>
+        {% endif %}
+        <div class="panel-body text-center ">
+            <form class="form_horizontal" id="user_form" method="post" action="{% url 'register' %}"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                    {% for field in user_form %}
+                    {% if field.label == "Password" %}
+                    <div class="form-group">
+                        {% for form in formset %}
+                        {{ form.label_tag }}
+                        <div class="input-group">
+                            {{ form }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    <div class="input-group text-center">
+                        {% if field.label == "Username" %}
+                        <span class="input-group-addon" id="sizing-addon2"><strong>@</strong></span>
+                        {% elif field.label == "Full Name" %}
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        {% elif field.label == "Password" or field.label == "Confirm password"%}
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        {% elif field.label == "Email" %}
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        {% endif %}
+                        {{ field }}
+                    </div>
+                    <p class="text-danger">{{ field.errors|striptags }}</p>
+                </div>
+                {% endfor %}
+                {% for field in profile_form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    <div class="input-group text-center">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
+                        {{ field }}
+                    </div>
+                </div>
+                <p class="text-danger">{{ field.errors|striptags }}</p>
+
+                {% endfor %}
+
+                <hr>
+                <div class="form-group">
+                    <input class="btn btn-success btn-lg btn-block" type="submit" name="submit" value="Register"/>
+                    <h6><strong>OR</strong></h6>
+                    <a class="btn btn-danger btn-block btn-lg" href="{% url 'index' %}">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% endif %}
+</div>
+{% endblock %}

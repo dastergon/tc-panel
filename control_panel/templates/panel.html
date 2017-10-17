@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Traffic Control Panel</h1>
+<h2>Available Regions</h2>
+<table id="rule-table">
+<tr>
+    <th>Region</th>
+</tr>
+{% for var in regions %}
+<tr>
+    <td><a href="{% url 'list_region_hosts' var.slug %}">{{var.name}}</a></td>
+</tr>
+{% empty %}
+    <tr>
+        <td></td>
+    </tr>
+{% endfor %}
+</table>
+<br />
+<h2>Available Deployment Groups</h2>
+<form action="/panel" method="POST">
+    {% csrf_token %}
+    {{ add_rule_group.non_field_errors | striptags }}
+    <table id="rule-table">
+    <tr>
+        <th><input type="checkbox" onclick="toggle(this)" /></th>
+        {% for field in add_rule_group %}
+            <th onclick="sortTable({{ forloop.counter0 }})">{{ field.label }}</th>
+        {% endfor %}
+        <th>Active</th>
+        <th>Deployed</th>
+        <th>Created</th>
+    </tr>
+    {% for var in rule_group %}
+    <tr>
+        <td><input type="checkbox" class="checkbox" name="rule_group" value={{ var.id }}></td>
+        <td><a href="{% url "list_rule_group_rules" var.name %}"> {{ var.name }} </a></td>
+        <td> {{ var.description }} </td>
+        <td> {{ var.is_active }} </td>
+        <td> {{ var.is_deployed }} </td>
+        <td> {{ var.created }} </td>
+    </tr>
+    {% empty %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    {% endfor %}
+    </table>
+    <input type="submit" name="deploy" value="Deploy" />
+    <input type="submit" name="undeploy" value="Undeploy" />
+</form>
+{% endblock %}

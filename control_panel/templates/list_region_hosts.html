@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Region: {{ region_name }}</h2>
+<p> Registered hosts in the region</p>
+<table id="rule-table">
+<tr>
+    <th><input type="checkbox" onclick="toggle(this)" /></th>
+    {% for field in hosts_form %}
+        <th onclick="sortTable({{ forloop.counter0 }})">{{ field.label }}</th>
+    {% endfor %}
+</tr>
+{% for host in hosts %}
+<tr>
+    {% ifnotequal host.name "all" %}
+        <td><input type="checkbox" class="checkbox" name="hosts" value={{ host.id }}></td>
+        <td><a href="{% url 'list_host_rules' host.name %}">{{ host.name }}</a> </td>
+        <td>{{ host.ip_address }}</td>
+        <td>{{ host.region }}</td>
+        <td>{{ host.instance_type}}</td>
+    {% endifnotequal %}
+<tr/>
+{% endfor %}
+</table>
+{% endblock %}

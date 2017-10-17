@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Manage Groups</h2>
+<p> Create new groups </p>
+<form action="." method="post">
+{% csrf_token %}
+{{ add_user_group_form }}
+<div class="form-group">
+  <button type="submit" name="add_group" class="btn btn-primary">Submit</button>
+</div>
+</form>
+
+<form action="." method="post">
+{% csrf_token %}
+{{ profile_form }}
+<div class="form-group">
+  <button type="submit" name="add_user_to_group" class="btn btn-primary">Submit</button>
+</div>
+</form>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Groups</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ user.first_name }}</td>
+      <td>{{ user.last_name }}</td>
+      <td>{% for group in user.groups.all %}
+          {{ group }},
+          {% endfor %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

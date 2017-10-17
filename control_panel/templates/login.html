@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-sm-11 col-sm-offset-1">
+            <div class="page-header">
+                <h1>Sign in to Traffic Control Panel</h1>
+            </div>
+            <div class="panel panel-primary">
+                {% if login_form.non_field_errors %}
+                <div class="text-center alert alert-danger alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                    {{ login_form.non_field_errors|striptags }}
+                </div>
+                {% endif %}
+                <div class="panel-body">
+                    <form class="form-horizontal" id="login_form" method="POST" action="{% url 'login' %}"
+                          enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+                            {% for field in login_form %}
+                            <div class="form-group">
+                                {{ field.label_tag }}
+                                <div class="input-group">
+                                    {% if field.label == "Username" or field.label == "Full name"%}
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    {% elif field.label == "Password" or field.label == "Confirm password"%}
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                    {% endif %}
+                                    {{ field }}
+                                </div>
+                            </div>
+                            <p class="text-danger">{{ field.errors|striptags }}</p>
+                            {% endfor %}
+                            <div class="form-group">
+                                <input class="btn btn-info btn-lg btn-block" type="submit" name="submit" value="Login"/>
+                            </div>
+                    </form>
+                    <div class="panel panel-default">
+                        <div class="panel-body text-center">
+                            New to Traffic Control Panel? <a href="{% url 'register' %}">Create an account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div> <!-- /container -->
+{% endblock %}

@@ -1,0 +1,6 @@
+ansible
+tcconfig
+django-notifications-hq
+django-extensions
+
+-e  https://github.com/google/ipaddr-py.git#egg=ipaddr

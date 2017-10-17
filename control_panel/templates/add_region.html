@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Add Geographical Region</h1>
+<p>Create new regions</p>
+<form action="." method="post">
+    {% csrf_token %}
+    {{ add_region.non_field_errors | striptags }}
+    {% for field in add_region %}
+    {{ field.errors|striptags }}
+    {% endfor %}
+    <table id="rule-table">
+        <tr>
+        {% for field in add_region %}
+            <th>{{ field.label}}</th>
+        {% endfor %}
+        </tr>
+        <tr>
+        {% for field in add_region %}
+            <td>{{ field }}</td>
+        {% endfor %}
+        </tr>
+    </table>
+    <input type="submit" name="submit" value="Submit" />
+</form>
+<br />
+<h2>Available Regions</h2>
+<form action="/region/delete/" method="post">
+    {% csrf_token %}
+    {{ actions_form }}
+    <input type="submit" name="submit" value="Submit" />
+    <br />
+    <br />
+    <table id="rule-table">
+    <tr>
+        <th><input type="checkbox" onclick="toggle(this)" /></th>
+        {% for field in add_region %}
+            {% if field.label == "Internal latency time unit" %}
+            {% elif field.label == "Internal Bandwidth Rate" %}
+            {% elif field.label == "External Bandwidth Rate" %}
+            {% else %}
+                <th onclick="sortTable({{ forloop.counter0 }})">{{ field.label }}</th>
+            {% endif %}
+        {% endfor %}
+    </tr>
+    {% for var in regions %}
+    <tr>
+        <td><input type="checkbox" class="checkbox" name="region" value={{ var.id }}></td>
+        <td><a href="{% url 'list_region_hosts' var.slug %}">{{ var.name}}</a></td>
+        <td>{{ var.slug}}</td>
+        {% if var.internal_max_bandwidth %}
+        <td>{{ var.internal_max_bandwidth }} {{ var.get_internal_bw_rate_display }} </td>
+        {% else %}
+            <td>None</td>
+        {% endif %}
+        {% if var.external_max_bandwidth %}
+            <td>{{ var.external_max_bandwidth }} {{ var.get_external_bw_rate_display }}</td>
+        {% else %}
+            <td>None</td>
+        {% endif %}
+        {% if var.internal_latency %}
+            <td>{{ var.internal_latency }} {{ var.get_internal_latency_time_unit_display }}</td>
+        {% else %}
+            <td>None</td>
+        {% endif %}
+        <td>{{ var.packet_loss }}</td>
+        <td>{{ var.packet_corruption_rate }}</td>
+    </tr>
+    {% empty %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    {% endfor %}
+    </table>
+</form>
+{% endblock %}

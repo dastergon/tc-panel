@@ -1,0 +1,46 @@
+[
+  {
+    "fields": {
+      "bandwidth": "100",
+      "bw_rate": "1",
+      "name": "testing-small"
+    },
+    "model": "control_panel.InstanceType"
+  },
+  {
+    "fields": {
+      "bandwidth": "1",
+      "bw_rate": "3",
+      "name": "testing-large"
+    },
+    "model": "control_panel.InstanceType"
+
+  },
+  {
+    "fields": {
+      "bandwidth": "2",
+      "bw_rate": "3",
+      "name": "c3.4xlarge"
+    },
+    "model": "control_panel.InstanceType"
+
+  },
+  {
+    "fields": {
+      "bandwidth": "1",
+      "bw_rate": "3",
+      "name": "c3.2xlarge"
+    },
+    "model": "control_panel.InstanceType"
+
+  },
+  {
+    "fields": {
+      "bandwidth": "500",
+      "bw_rate": "2",
+      "name": "c3.xlarge"
+    },
+    "model": "control_panel.InstanceType"
+
+  }
+]

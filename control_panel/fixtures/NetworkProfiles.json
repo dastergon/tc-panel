@@ -1,0 +1,80 @@
+[
+  {
+    "fields": {
+      "latency": "500",
+      "bandwidth": "50",
+      "bw_rate": "1",
+      "packet_loss": "2",
+      "name": "GPRS (good)"
+    },
+    "model": "control_panel.InstanceType"
+  },
+  {
+    "fields": {
+      "latency": "300",
+      "bandwidth": "250",
+      "bw_rate": "1",
+      "packet_loss": "1.5",
+      "name": "EDGE (good)"
+    },
+    "model": "control_panel.InstanceType"
+  },
+  {
+    "fields": {
+      "latency": "250",
+      "bandwidth": "750",
+      "bw_rate": "1",
+      "packet_loss": "1.5",
+      "name": "3G/HSDPA (good)"
+    },
+    "model": "control_panel.InstanceType"
+  },
+  {
+    "fields": {
+      "latency": "185",
+      "bandwidth": "40",
+      "bw_rate": "1",
+      "packet_loss": "2",
+      "name": "DIAL-UP (good)"
+    },
+    "model": "control_panel.InstanceType"
+  },
+  {
+    "fields": {
+      "latency": "70",
+      "bandwidth": "2000",
+      "bw_rate": "1",
+      "packet_loss": "2",
+      "name": "DSL (poor)"
+    },
+    "model": "control_panel.InstanceType"
+  },
+  {
+    "fields": {
+      "latency": "40",
+      "bandwidth": "8000",
+      "bw_rate": "1",
+      "packet_loss": "0.5",
+      "name": "DSL (good)"
+    },
+    "model": "control_panel.InstanceType"
+  },
+  {
+    "fields": {
+      "latency": "40",
+      "bandwidth": "30000",
+      "bw_rate": "1",
+      "packet_loss": "0.2",
+      "name": "WIFI (good)"
+    },
+    "model": "control_panel.InstanceType"
+  },
+  {
+    "fields": {
+      "latency": "1500",
+      "packet_loss": "0.2",
+      "name": "Satellite"
+    },
+    "model": "control_panel.InstanceType"
+  }
+]

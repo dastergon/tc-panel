@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<table id="rule-table">
+    <tr>
+        <th>Timestamp</th>
+        <th>Log</th>
+    </tr>
+    {% for log in history %}
+    <tr>
+    <td>{{ log.timestamp }}</td>
+    <td>{{ log.log }} </td>
+    {% empty %}
+        <td></td>
+        <td></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

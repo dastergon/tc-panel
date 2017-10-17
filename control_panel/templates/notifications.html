@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<ul>
+{% for message in messages %}
+<input id="token" type="hidden" value="{{ csrf_token }}">
+{% if message.verb == "deployed" %}
+<li id="{{ message.id }}">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <button onclick="dismissMessage('{{ message.id }}')" type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    [{{ message.timestamp }}] Deployment has been successful!
+    </div>
+</li>
+{% elif message.verb == "failed" %}
+<li id="{{ message.id }}">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <button onclick="dismissMessage('{{ message.id }}')" type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    [{{ message.timestamp }}] The deployment has failed:
+    {{ message.description }}
+    </div>
+</li>
+{% elif message.verb == "rules_failed" %}
+<li id="{{ message.id }}">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <button onclick="dismissMessage('{{ message.id }}')" type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    [{{ message.timestamp }}] Some Rules have failed to be deployed:
+    {{ message.description }}
+    </div>
+</li>
+{% endif %}
+{% endfor %}
+</ul>
+
+<table id="rule-table">
+    <tr>
+        <th>Deployment Log</th>
+    </tr>
+    {% for msg in messages %}
+    <tr>
+        <td>{{ msg }}</td>
+    {% empty %}
+        <td></td>
+        <td></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+

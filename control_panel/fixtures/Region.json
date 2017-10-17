@@ -1,0 +1,27 @@
+[ {
+    "fields": {
+        "name": "US East",
+        "slug": "us-east",
+        "external_max_bandwidth": "20",
+        "external_bw_rate": "3"
+    },
+    "model": "control_panel.Region"
+},
+{
+    "fields": {
+        "name": "US West",
+        "slug": "us-west",
+        "external_max_bandwidth": "20",
+        "external_bw_rate": "3"
+    },
+    "model": "control_panel.Region"
+},
+{
+    "fields": {
+        "name": "EU West",
+        "slug": "eu-west",
+        "external_max_bandwidth": "20",
+        "external_bw_rate": "3"
+    },
+    "model": "control_panel.Region"
+}]

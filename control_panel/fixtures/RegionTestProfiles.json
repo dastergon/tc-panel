@@ -1,0 +1,24 @@
+[
+  {
+    "fields": {
+      "internal_max_bandwidth": "100",
+      "internal_bw_rate": "M",
+      "external_max_bandwidth": "64",
+      "external_bw_rate": "M",
+      "slug": "eu-west",
+      "name": "EU West"
+    },
+    "model": "control_panel.Region"
+  },
+  {
+    "fields": {
+      "internal_max_bandwidth": "10",
+      "internal_bw_rate": "G",
+      "external_max_bandwidth": "512",
+      "external_bw_rate": "M",
+      "slug": "us-east",
+      "name": "US East"
+    },
+    "model": "control_panel.Region"
+  }
+]
