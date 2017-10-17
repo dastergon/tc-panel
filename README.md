@@ -21,7 +21,7 @@ network characteristics to incoming and outgoing packets on a per-Network Interf
 low-level network traffic management interface. Due to its low overhead netem comes in handy for
 testing and emulation of Wide Area Networks.
 
-The communication between Linux kernel’s subsystem and the userspace occurs through the ‘tc‘
+The communication between Linux kernel’s subsystem and the userspace occurs through the `tc`
 command line utility which is bundled in the iproute2 software package along with other networking
 utilities. The tc utility is used to configure the Traffic Control interface in the Linux kernel.
 
@@ -49,11 +49,11 @@ Copy the local_settings.py.sample sample to a regular file:
     cp local_settings.py.sample local_settings.py
 
 
-In the /path/to/tc-panel/tc-panel/settings.py the variable ANSIBLE_INVENTORY should be declared to the path that we want:
+In the `/path/to/tc-panel/tc-panel/settings.py` the variable `ANSIBLE_INVENTORY` should be declared to the path that we want:
 
 Example:
 
-    ANSIBLE_INVENTORY = "/pat/to/hosts"
+    ANSIBLE_INVENTORY = "/path/to/hosts"
 
 We can either use a pre-existing Ansible Inventory file or create one to specify all the parameters of the
 project.
