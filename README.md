@@ -1,4 +1,29 @@
-# TC Panel
+# Traffic Control Panel (TC Panel)
+
+### About
+
+The Traffic Control Panel also known as TC Panel, is a web application created for the purposes of
+my MSc project. It provides a user-friendly interface where researchers and practitioners can design
+their own network topologies and emulate them to a pre-existing infrastructure without buying extra
+resources to create a real geo-distributed setting. The TC Panel creates an artificial geo-distributed
+environment with a diverse range of network characteristics such as latency, bandwidth, packet loss
+rate, packet corruption rate, which are afterwards translated into commands that configure the traffic
+shaping to the physical machines and create an emulation ofWide Area Networks. The TC Panel is
+written in Django, which is a Python web framework that adheres to the Model View Controller
+architectural pattern. TC Panel is integrated at the programming level with Ansible, an automation
+platform, that facilitates remote command execution, which is responsible for deploying the traffic
+shaping characteristics to the machines.
+
+TC Panel leverages Linux kernel’s Traffic Control subsystem, in particular, its netem
+functionality. NetEm offers parameters to add delay, bandwidth rate, packet loss and other
+network characteristics to incoming and outgoing packets on a per-Network Interface Controller
+(NIC) basis. It is built on top of the Quality Of Service (QoS) in the Linux kernel, which exposes a
+low-level network traffic management interface. Due to its low overhead netem comes in handy for
+testing and emulation of Wide Area Networks.
+
+The communication between Linux kernel’s subsystem and the userspace occurs through the ‘tc‘
+command line utility which is bundled in the iproute2 software package along with other networking
+utilities. The tc utility is used to configure the Traffic Control interface in the Linux kernel.
 
 ### Authors
 
