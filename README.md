@@ -61,7 +61,7 @@ Example:
 We can either use a pre-existing Ansible Inventory file or create one to specify all the parameters of the
 project.
 
-Example of the current Ansible Inventory file:
+Example of an Ansible Inventory file:
 
 ```
     [all:vars]
