@@ -26,7 +26,7 @@ SECRET_KEY = 'aSecretNotforProd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.5', 'houseofcards.no-ip.org']
+ALLOWED_HOSTS = []
 
 
 # Application definition
